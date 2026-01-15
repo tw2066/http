@@ -1,6 +1,5 @@
 # http2 客户端 & 基于Http2的hyperf RPC组件
 
-
 ## 安装
 
 ```
@@ -10,29 +9,29 @@ composer require tangwei/http
 ## http2 客户端
 示例
 ```php
-            $domain = 'httpbin.org';
-            $client = new \Tangwei\Http\Http2Client($domain, 443, true);
-            $client->set([
-                'timeout' => -1,
-                'ssl_host_name' => $domain,
-            ]);
-            $client->connect();
-            for ($i = 1; $i < 30; ++$i) {
-                go(function () use ($client, $i) {
-                    $req = new Request();
-                    $req->method = 'POST';
-                    $req->path = '/post';
-                    $req->headers = [
-                        'host' => '127.0.0.1',
-                        'user-agent' => 'Chrome/49.0.2587.3',
-                        'accept' => 'text/html,application/xhtml+xml,application/xml',
-                        'accept-encoding' => 'gzip',
-                    ];
-                    $req->data = (string) $i;
-                    $data = $client->request($req);
-                    $result = json_decode($data->data, true);
-                });
-            }
+$domain = 'httpbin.org';
+$client = new \Tangwei\Http\Http2Client($domain, 443, true);
+$client->set([
+    'timeout' => -1,
+    'ssl_host_name' => $domain,
+]);
+$client->connect();
+for ($i = 1; $i < 30; ++$i) {
+    go(function () use ($client, $i) {
+        $req = new Request();
+        $req->method = 'POST';
+        $req->path = '/post';
+        $req->headers = [
+            'host' => '127.0.0.1',
+            'user-agent' => 'Chrome/49.0.2587.3',
+            'accept' => 'text/html,application/xhtml+xml,application/xml',
+            'accept-encoding' => 'gzip',
+        ];
+        $req->data = (string) $i;
+        $data = $client->request($req);
+        $result = json_decode($data->data, true);
+    });
+}
 ```
 ## 基于Http2的hyperf RPC组件
 

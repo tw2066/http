@@ -11,7 +11,6 @@ use Hyperf\Rpc\Contract\TransporterInterface;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
 use Swoole\Http2\Request;
-use Swoole\Server;
 
 class JsonRpcHttp2Transporter implements TransporterInterface
 {
@@ -83,7 +82,6 @@ class JsonRpcHttp2Transporter implements TransporterInterface
 
     protected function refresh(): void
     {
-
         $nodes = $this->getNodes();
         $nodeCount = count($nodes);
         $count = (int) ($this->config['client_count'] ?? 4);

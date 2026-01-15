@@ -10,7 +10,7 @@ use Hyperf\LoadBalancer\LoadBalancerInterface;
 use Hyperf\Rpc\Contract\TransporterInterface;
 use Psr\Container\ContainerInterface;
 use RuntimeException;
-use Swoole\Http\Request;
+use Swoole\Http2\Request;
 use Swoole\Server;
 
 class JsonRpcHttp2Transporter implements TransporterInterface

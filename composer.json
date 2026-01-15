@@ -1,6 +1,6 @@
 {
   "name": "tangwei/http",
-  "description": "hyperf snowflake heartbeat",
+  "description": "http2 client, hyperf json rpc http2",
   "license": "MIT",
   "keywords": [
     "http2",
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Tangwei\\Http2\\": "src/"
+      "Tangwei\\Http\\": "src/"
     }
   },
   "extra": {

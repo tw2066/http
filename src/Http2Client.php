@@ -7,8 +7,8 @@ namespace Tangwei\Http;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Channel;
 use Swoole\Coroutine\Http2\Client as SwooleClient;
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+use Swoole\Http2\Request;
+use Swoole\Http2\Response;
 use Throwable;
 
 class Http2Client extends SwooleClient

@@ -44,7 +44,10 @@ class JsonRpcHttp2Transporter implements TransporterInterface
         if ($response !== false) {
             return $response->data;
         }
-
+        if ($client->errCode !== 0) {
+            $errMsg = sprintf('HTTP/2 client connection to %s:%s failed with error code %d. Reason: %s', $client->host, $client->port, $client->errCode, $client->errMsg);
+            throw new RuntimeException($errMsg);
+        }
         return '';
     }
 

@@ -35,7 +35,7 @@ for ($i = 1; $i < 30; ++$i) {
 ```
 ## 基于Http2的hyperf RPC组件
 
-优先配置好服务rpc配置 https://hyperf.wiki/3.1/#/zh-cn/json-rpc
+优先配置json-rpc https://hyperf.wiki/3.1/#/zh-cn/json-rpc
 
 protocol 协议，使用 jsonrpc-http
 
@@ -49,7 +49,7 @@ return [
 ];
 ```
 
-## 客户端配置
+### 客户端配置
 
 修改 `config/autoload/services.php` 配置文件
 
@@ -63,7 +63,6 @@ return [
         [
             // ...
             'options' => [
-
                 // 客户端数量
                 'client_count' => 4,
             ],
@@ -72,8 +71,9 @@ return [
 ];
 ```
 
-## hyperf启动http2协议
-修改 `config/autoload/services.php` 配置文件
+### 确定是否开启http2
+
+查看 `config/autoload/services.php` 配置文件
 
 ```php
 return [
@@ -86,15 +86,15 @@ return [
 ];
 ```
 
-## 测试
+### rpc测试
 
 ```sh
 ab -n 200000 -c 500 http://127.0.0.1:19501/rpc/id
 ```
 测试结果
 
-| 版本             | Requests per second                              |
-|----------------|--------------------------------------------------|
-| 使用http2        | 7107.54 [#/sec] (mean)                           |
-| 默认http         | 3008.05 [#/sec] (mean)                           |
+| 协议      | Requests per second                              |
+|---------|--------------------------------------------------|
+| 使用http2 | 7107.54 [#/sec] (mean)                           |
+| 默认http  | 3008.05 [#/sec] (mean)                           |
 
